@@ -149,7 +149,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:radial-gradient(120% 90% at 50% 30%,#2a2a31 0%,#16161a 70%)}
 .gallery::-webkit-scrollbar{display:none}
 .gallery>div{flex:none;width:100%;height:min(125vw,62vh);position:relative;overflow:hidden;scroll-snap-align:center;display:grid;place-items:center}
-.gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.gallery img,.gallery video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .gallery svg{width:82%}
 .gal-wrap{position:relative}
 .gal-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(13,13,15,.7);color:var(--paper);font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center}
@@ -170,6 +170,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .size-pick button{min-width:64px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--box-2);cursor:pointer;font-family:var(--f-mono);font-weight:700;font-size:13px}
 .size-pick button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .size-pick.need button{border-color:var(--sold)}
+.size-pick button.x{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.sizes-mini span.x{opacity:.4;text-decoration:line-through}
 .hint{font-size:12.5px;color:var(--sold);margin-top:6px}
 .desc{margin:0;color:var(--paper);opacity:.85}
 .msg{background:var(--ink);border:1px dashed #3a3a42;border-radius:12px;padding:12px 14px;font-family:var(--f-mono);font-size:12.5px;line-height:1.55;white-space:pre-wrap;color:var(--paper);user-select:all;-webkit-user-select:all}
@@ -315,6 +317,8 @@ const IG_USER = "gotty_kicks";
    photos   fotos del par (se suben junto al catálogo); vacío = dibujo de ejemplo
    tint     colores del dibujo de ejemplo [capellada, suela, detalle]
    available false = aparece como "No disponible"
+   sizeNote nota bajo las tallas (opcional), se muestra con asterisco
+   soldSizes tallas agotadas (se ven tachadas): ["US 8"]
    box      true/false: incluye caja (solo zapatillas)
 */
 const PRODUCTS = [
@@ -331,6 +335,9 @@ const PRODUCTS = [
   {cat:"Zapatillas", code:"GK-024", brand:"Jordan", name:"Jordan 4 Retro Rare Air Tour Yellow", price:275000, cond:"new", condText:"Nuevo (DS)", sizes:[], box:true, available:false, photos:["fotos/gk-024-1.jpg","fotos/gk-024-2.jpg","fotos/gk-024-3.jpg"], desc:"Agotado. Escríbenos si quieres que te avisemos cuando vuelvan o que te consigamos un par."},
   {cat:"Zapatillas", code:"GK-025", brand:"BAPE", name:"MF Doom x Bapesta Panda", price:180000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8","US 8.5","US 9","US 9.5","US 10"], box:true, photos:["fotos/gk-025-1.jpg","fotos/gk-025-2.jpg","fotos/gk-025-3.jpg","fotos/gk-025-4.jpg","fotos/gk-025-5.jpg"], desc:"Par nuevo con caja edición MF Doom. Charol negro y blanco."},
   {cat:"Zapatillas", code:"GK-026", brand:"BAPE", name:"MF Doom x Bapesta Grey Black", price:180000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8","US 8.5","US 9","US 9.5","US 10"], box:true, photos:["fotos/gk-026-1.jpg","fotos/gk-026-2.jpg","fotos/gk-026-3.jpg","fotos/gk-026-4.jpg"], desc:"Par nuevo con caja edición MF Doom. Charol negro y gris."},
+  {cat:"Zapatillas", code:"GK-027", brand:"Jordan", name:"Jordan 4 Retro Toro Bravo", price:209990, cond:"new", condText:"Nuevo (DS)", sizes:["US 8","US 8.5","US 9","US 9.5","US 10","US 10.5"], soldSizes:["US 8","US 8.5","US 9","US 9.5","US 10"], box:true, photos:["fotos/gk-027-1.jpg","fotos/gk-027-2.jpg","fotos/gk-027-3.jpg","fotos/gk-027-4.jpg"], desc:"Par nuevo con caja. Queda solo US 10.5."},
+  {cat:"Ropa", code:"GK-207", brand:"Emotion", name:"Emotion Denim Shirt", price:79990, cond:"new", condText:"Nueva con etiqueta", colors:["Black","Washed Blue"], sizes:["S","M","L","XL"], photos:["fotos/gk-207-1.jpg","fotos/gk-207-2.jpg","fotos/gk-207-v.mp4"], desc:"Camisa de mezclilla nueva con etiqueta, edición limitada. Bolsillos con logo en relieve, paisley y tachas. Mismo precio en ambos colores."},
+  {cat:"Zapatillas", code:"GK-028", brand:"Jordan", name:"Jordan OG Metallic Silver (Women's)", price:139990, cond:"new", condText:"Nuevo (DS)", sizes:["8.5 W · 25.5 cm","9 W · 26 cm","10.5 W · 27.5 cm","11.5 W · 28.5 cm","12 W · 29 cm"], soldSizes:["12 W · 29 cm"], sizeNote:"Tallas de mujer (WMNS). Al lado va el largo en centímetros para que encuentres tu equivalencia.", box:true, photos:["fotos/gk-028-1.jpg","fotos/gk-028-2.jpg","fotos/gk-028-3.jpg"], desc:"Par nuevo con caja. * Talla de mujer (WMNS): guíate por los centímetros."},
   /* ---------- EJEMPLOS (se borran al terminar de cargar) ---------- */
   {cat:"Zapatillas", code:"GK-001", brand:"Jordan", name:"Jordan 4 Retro Black Cat (2020)", price:320000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8.5","US 9.5"], box:true, tint:["#151517","#1f1f22","#3a3a3f"], desc:"Par nuevo, sin uso, con caja original."},
   {cat:"Zapatillas", code:"GK-002", brand:"Jordan", name:"Jordan 1 Retro High OG Chicago Lost and Found", price:285000, cond:"new", condText:"Nuevo (DS)", sizes:["US 9","US 10"], box:true, tint:["#f2efe6","#efe3c8","#b8262c"], desc:"Par nuevo con caja. Envejecido de fábrica en la suela, es parte del diseño."},
@@ -350,6 +357,7 @@ const $ = s => document.querySelector(s);
 const clp = n => "$" + n.toLocaleString("es-CL");
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const CLOTH = ["XXS","XS","S","M","L","XL","XXL","XXXL"];
+const avail = p => p.sizes.filter(s=>!(p.soldSizes||[]).includes(s));
 const sizeNum = s => CLOTH.includes(s) ? 100 + CLOTH.indexOf(s) : (parseFloat(String(s).replace(/[^\d.]/g,"")) || 0);
 
 /* banda */
@@ -380,7 +388,8 @@ function garment(kind, [body, trim]){
     <rect x="56" y="166" width="108" height="10" fill="${trim}"/>`:`<path d="M78 22 C84 36 96 42 110 42 C124 42 136 36 142 22" fill="none" stroke="${trim}" stroke-width="5"/>`}
   </svg>`;
 }
-const media = (p, i=0) => p.photos && p.photos.length ? `<img src="${esc(p.photos[i])}" alt="${esc(p.name)}" loading="lazy">` : (p.cat==="Ropa" ? garment(p.kind, p.tint || ["#444","#333"]) : shoe(p.tint || ["#ddd","#fff","#333"]));
+const isVid = f => /\.mp4$/i.test(f);
+const media = (p, i=0) => p.photos && p.photos.length ? (isVid(p.photos[i]) ? `<video src="${esc(p.photos[i])}" autoplay muted loop playsinline preload="metadata"></video>` : `<img src="${esc(p.photos[i])}" alt="${esc(p.name)}" loading="lazy">`) : (p.cat==="Ropa" ? garment(p.kind, p.tint || ["#444","#333"]) : shoe(p.tint || ["#ddd","#fff","#333"]));
 
 /* filtros */
 const state = {q:"", cat:"", brand:"", cond:"", size:"", sort:""};
@@ -396,7 +405,7 @@ $("#cats").addEventListener("click", e=>{
 function fillSelects(){
   const pool = PRODUCTS.filter(p=>!state.cat || p.cat===state.cat);
   const brands = [...new Set(pool.map(p=>p.brand))].sort();
-  const sizes = [...new Set(pool.flatMap(p=>p.sizes))].sort((a,b)=>sizeNum(a)-sizeNum(b));
+  const sizes = [...new Set(pool.filter(p=>p.available!==false).flatMap(avail))].sort((a,b)=>sizeNum(a)-sizeNum(b));
   if(!brands.includes(state.brand)) state.brand = "";
   if(!sizes.includes(state.size)) state.size = "";
   $("#brand").innerHTML = `<option value="">Marca: todas</option>` + brands.map(b=>`<option${b===state.brand?" selected":""}>${esc(b)}</option>`).join("");
@@ -411,7 +420,7 @@ function render(){
     (!state.cat || p.cat===state.cat) &&
     (!state.brand || p.brand===state.brand) &&
     (!state.cond || p.cond===state.cond) &&
-    (!state.size || p.sizes.includes(state.size)) &&
+    (!state.size || avail(p).includes(state.size)) &&
     (!state.q || (p.name+" "+p.brand+" "+p.code).toLowerCase().includes(state.q))
   );
   if(state.sort) list = [...list].sort((a,b)=> state.sort==="asc" ? a.price-b.price : b.price-a.price);
@@ -433,7 +442,7 @@ function card(p){
       <div class="name">${esc(p.name)}</div>
       <div class="cond ${p.cond}">${esc(p.condText)}</div>
       ${p.colors&&p.colors.length>1?`<div class="cond" style="color:var(--muted)">${p.colors.length} colores</div>`:""}
-      <div class="sizes-mini">${p.sizes.map(s=>`<span>${esc(s)}</span>`).join("")}</div>
+      <div class="sizes-mini">${p.sizes.map(s=>(p.soldSizes||[]).includes(s)?`<span class="x">${esc(s)}</span>`:`<span>${esc(s)}</span>`).join("")}</div>
     </div>
     <div class="label">
       <span class="price">${off?`<s>${clp(p.price)}</s>`:clp(p.price)}<small>CLP</small></span>
@@ -465,7 +474,7 @@ function message(p, size, color){
 }
 function open(code){
   const p = PRODUCTS.find(x=>x.code===code); if(!p) return;
-  cur = p; pick = p.sizes.length===1 ? p.sizes[0] : ""; pickC = p.colors && p.colors.length===1 ? p.colors[0] : "";
+  cur = p; pick = avail(p).length===1 ? avail(p)[0] : ""; pickC = p.colors && p.colors.length===1 ? p.colors[0] : "";
   const off = p.available===false;
   const n = p.photos && p.photos.length ? p.photos.length : 1;
   $("#sheet").innerHTML = `
@@ -492,8 +501,9 @@ function open(code){
       </div>`:""}
       <div${p.sizes.length?"":" hidden"}>
         <div class="lbl">${off?"Tallas":"Elige tu talla"}</div>
-        <div class="size-pick" id="sizes">${p.sizes.map(s=>`<button type="button" data-s="${esc(s)}" aria-pressed="${s===pick}" ${off?"disabled":""}>${esc(s)}</button>`).join("")}</div>
+        <div class="size-pick" id="sizes">${p.sizes.map(s=>{const so=(p.soldSizes||[]).includes(s);return `<button type="button" data-s="${esc(s)}" aria-pressed="${s===pick}" ${off||so?"disabled":""} ${so?'class="x" title="Agotada"':""}>${esc(s)}</button>`}).join("")}</div>
         <div class="hint" id="hint" hidden>Elige una talla antes de pedir.</div>
+        ${p.sizeNote?`<p class="note" style="margin:8px 0 0">* ${esc(p.sizeNote)}</p>`:""}
       </div>
       ${p.desc?`<div><div class="lbl">Descripción</div><p class="desc">${esc(p.desc)}</p></div>`:""}
       ${off?`<a class="ig-btn" href="https://ig.me/m/${IG_USER}" target="_blank" rel="noopener" id="igBtn">Avísame si vuelve</a>`:`
