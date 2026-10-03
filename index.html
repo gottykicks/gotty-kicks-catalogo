@@ -321,6 +321,7 @@ const PRODUCTS = [
   {cat:"Zapatillas", code:"GK-021", brand:"Yeezy", name:"Yeezy Slide YS01 Black", price:79990, cond:"new", condText:"Nuevo (DS)", sizes:["US 5","US 6","US 7","US 8","US 9","US 10","US 11","US 12","US 13"], photos:["fotos/gk-021-1.jpg"], desc:"Slide nueva, con bolsa."},
   {cat:"Zapatillas", code:"GK-022", brand:"Yeezy", name:"Yeezy Slide YS01 Cream", price:79990, cond:"new", condText:"Nuevo (DS)", sizes:["US 5","US 6","US 7","US 8","US 9","US 10","US 11","US 12","US 13"], photos:["fotos/gk-022-1.jpg"], desc:"Slide nueva, con bolsa."},
   {cat:"Zapatillas", code:"GK-023", brand:"Nike", name:"Nike Air Force 1 Low '07 Black University Red", price:99990, cond:"new", condText:"Nuevo (DS)", sizes:["US 9.5"], box:true, photos:["fotos/gk-023-1.jpg","fotos/gk-023-2.jpg","fotos/gk-023-3.jpg"], desc:"Par nuevo con caja. Costuras rojas en todo el upper."},
+  {cat:"Zapatillas", code:"GK-024", brand:"Jordan", name:"Jordan 4 Retro Vivid Sulfur (Women's)", price:275000, cond:"new", condText:"Nuevo (DS)", sizes:[], box:true, available:false, photos:["fotos/gk-024-1.jpg","fotos/gk-024-2.jpg","fotos/gk-024-3.jpg"], desc:"Agotado. Escríbenos si quieres que te avisemos cuando vuelvan o que te consigamos un par."},
   /* ---------- EJEMPLOS (se borran al terminar de cargar) ---------- */
   {cat:"Zapatillas", code:"GK-001", brand:"Jordan", name:"Jordan 4 Retro Black Cat (2020)", price:320000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8.5","US 9.5"], box:true, tint:["#151517","#1f1f22","#3a3a3f"], desc:"Par nuevo, sin uso, con caja original."},
   {cat:"Zapatillas", code:"GK-002", brand:"Jordan", name:"Jordan 1 Retro High OG Chicago Lost and Found", price:285000, cond:"new", condText:"Nuevo (DS)", sizes:["US 9","US 10"], box:true, tint:["#f2efe6","#efe3c8","#b8262c"], desc:"Par nuevo con caja. Envejecido de fábrica en la suela, es parte del diseño."},
@@ -416,7 +417,7 @@ function card(p){
     <div class="card-media">${media(p)}
       ${p.cat!=="Ropa"&&p.box===false?`<span class="tag tag-l">Sin caja</span>`:""}
       ${p.oldPrice&&!off?`<span class="tag tag-r">Oferta</span>`:""}
-      ${off?`<div class="sold-over">No disponible</div>`:""}
+      ${off?`<div class="sold-over">Agotado</div>`:""}
     </div>
     <div class="card-body">
       <div class="brand">${esc(p.brand)}</div>
@@ -477,7 +478,7 @@ function open(code){
         <div class="size-pick" id="colors">${p.colors.map(c=>`<button type="button" data-c="${esc(c)}" aria-pressed="${c===pickC}" ${off?"disabled":""}>${esc(c)}</button>`).join("")}</div>
         <div class="hint" id="hintC" hidden>Elige un color antes de pedir.</div>
       </div>`:""}
-      <div>
+      <div${p.sizes.length?"":" hidden"}>
         <div class="lbl">${off?"Tallas":"Elige tu talla"}</div>
         <div class="size-pick" id="sizes">${p.sizes.map(s=>`<button type="button" data-s="${esc(s)}" aria-pressed="${s===pick}" ${off?"disabled":""}>${esc(s)}</button>`).join("")}</div>
         <div class="hint" id="hint" hidden>Elige una talla antes de pedir.</div>
