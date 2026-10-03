@@ -302,7 +302,8 @@ const IG_USER = "gotty_kicks";
    price    precio en CLP (número, sin puntos)
    oldPrice precio anterior tachado (opcional)
    cond     "new" o "used"   ·  condText: texto que se muestra
-   colors   colores a elegir (opcional): ["Negra","Gris"]
+   colors   colores a elegir (opcional): ["Stretch Limo","Dark Oatmeal"]
+   colorPhoto  (opcional) qué foto mostrar al elegir cada color: {"Stretch Limo":1} (la primera foto es 0)
    sizes    tallas disponibles (zapatillas: "US 9"; ropa: "M")
    photos   fotos del par (se suben junto al catálogo); vacío = dibujo de ejemplo
    tint     colores del dibujo de ejemplo [capellada, suela, detalle]
@@ -311,7 +312,7 @@ const IG_USER = "gotty_kicks";
 */
 const PRODUCTS = [
   /* ---------- PRODUCTOS REALES ---------- */
-  {cat:"Ropa", code:"GK-201", brand:"Fear of God Essentials", name:"Fear of God Essentials T-shirt (SS22)", price:75000, cond:"new", condText:"Nueva (DS)", colors:["Negra","Gris","Crema"], sizes:["XS","S","M","L","XL"], photos:["fotos/gk-201-1.jpg"], desc:"Polera nueva, temporada SS22. Mismo precio en los tres colores. Corte oversize."},
+  {cat:"Ropa", code:"GK-201", brand:"Fear of God Essentials", name:"Fear of God Essentials T-shirt (SS22)", price:75000, cond:"new", condText:"Nueva (DS)", colors:["Stretch Limo","Dark Oatmeal","Light Oatmeal"], colorPhoto:{"Stretch Limo":1,"Dark Oatmeal":2,"Light Oatmeal":3}, sizes:["XS","S","M","L","XL"], photos:["fotos/gk-201-1.jpg","fotos/gk-201-2.jpg","fotos/gk-201-3.jpg","fotos/gk-201-4.jpg"], desc:"Polera nueva, temporada SS22. Mismo precio en los tres colores. Corte oversize."},
   /* ---------- EJEMPLOS (se borran al terminar de cargar) ---------- */
   {cat:"Zapatillas", code:"GK-001", brand:"Jordan", name:"Jordan 4 Retro Black Cat (2020)", price:320000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8.5","US 9.5"], box:true, tint:["#151517","#1f1f22","#3a3a3f"], desc:"Par nuevo, sin uso, con caja original."},
   {cat:"Zapatillas", code:"GK-002", brand:"Jordan", name:"Jordan 1 Retro High OG Chicago Lost and Found", price:285000, cond:"new", condText:"Nuevo (DS)", sizes:["US 9","US 10"], box:true, tint:["#f2efe6","#efe3c8","#b8262c"], desc:"Par nuevo con caja. Envejecido de fábrica en la suela, es parte del diseño."},
@@ -498,6 +499,8 @@ function open(code){
     pickC = b.dataset.c;
     document.querySelectorAll("#colors button").forEach(x=>x.setAttribute("aria-pressed", x===b));
     $("#colors").classList.remove("need"); $("#hintC").hidden = true;
+    const gi = p.colorPhoto && p.colorPhoto[pickC];
+    if(gi!=null){ const g=$("#gal"); g.scrollTo({left:g.clientWidth*gi, behavior:"smooth"}); }
     updateMsg();
   };
   const gal = $("#gal");
