@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Catálogo de sneakers 100% originales de Gotty Kicks. Pide por Instagram @gotty_kicks.">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+<title>Gotty Kicks Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: vitrina oscura de una columna; cada par es una "caja" con su etiqueta de talla, como la etiqueta de una caja de zapatillas. */
+:root{
+  --ink:#0d0d0f;          /* fondo */
+  --box:#17171b;          /* superficie de tarjeta */
+  --box-2:#202026;        /* superficie elevada */
+  --line:#2c2c33;
+  --paper:#f3f1ec;        /* texto principal / etiqueta */
+  --muted:#9a98a2;
+  --kraft:#c9965a;        /* cartón de caja: acento */
+  --kraft-ink:#1a1206;
+  --ok:#5fd38a;
+  --used:#f0b44c;
+  --sold:#e0574f;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--ink);color:var(--paper);font-family:var(--f-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--kraft);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:34px;height:34px;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-items:center;font-family:var(--f-display);font-weight:900;font-size:17px;letter-spacing:-.5px}
+.logo-word{font-family:var(--f-display);font-weight:800;font-size:21px;letter-spacing:.5px;text-transform:uppercase}
+.nav{display:flex;gap:18px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.nav a{text-decoration:none;color:var(--muted)}
+.nav a:hover{color:var(--paper)}
+@media (max-width:560px){.nav .hide-sm{display:none}}
+
+/* banda */
+.band{background:var(--kraft);color:var(--kraft-ink);overflow:hidden;white-space:nowrap;border-block:1px solid #000}
+.band-track{display:inline-flex;gap:28px;padding:9px 0;font-family:var(--f-display);font-weight:800;font-size:17px;letter-spacing:.12em;text-transform:uppercase;animation:roll 28s linear infinite}
+.band-track span::after{content:"◆";margin-left:28px;font-size:11px;vertical-align:2px}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* hero */
+.hero{padding-block:44px 36px}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--kraft)}
+.hero h1{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(64px,19vw,168px);line-height:.82;letter-spacing:-.01em;margin:14px 0 18px;text-wrap:balance}
+.hero h1 em{font-style:normal;-webkit-text-stroke:2px var(--paper);color:transparent}
+.hero p{max-width:46ch;color:var(--muted);margin:0 0 22px;font-size:16px}
+.hero p b{color:var(--paper)}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);background:transparent;cursor:pointer}
+.btn-solid{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.btn-solid:hover{background:#fff}
+.btn-ghost:hover{border-color:var(--muted)}
+
+/* pasos */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding-block:8px 40px}
+@media (max-width:720px){.steps{grid-template-columns:1fr}}
+.step{background:var(--box);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start}
+.step-n{grid-row:span 2;font-family:var(--f-display);font-weight:900;font-size:40px;line-height:.9;color:var(--kraft)}
+.step h3{margin:0;font-family:var(--f-display);font-weight:800;font-size:20px;text-transform:uppercase;letter-spacing:.02em}
+.step p{margin:0;color:var(--muted);font-size:14px}
+
+/* catálogo */
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.sec-head h2{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(36px,9vw,58px);line-height:.9;margin:0;text-wrap:balance}
+.sec-head p{margin:0;color:var(--muted);max-width:60ch}
+#catalogo{padding-block:24px 48px;scroll-margin-top:70px}
+.tools{display:grid;gap:10px;margin-bottom:14px}
+.search{position:relative}
+.search input{width:100%;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--box);color:var(--paper);padding:0 14px 0 40px;font:inherit}
+.search input::placeholder{color:var(--muted)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;height:36px;padding:0 15px;border-radius:999px;border:1px solid var(--line);background:var(--box);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.row-filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sel{height:36px;border-radius:999px;border:1px solid var(--line);background:var(--box);color:var(--paper);padding:0 12px;font:inherit;font-size:13px}
+.count{margin-left:auto;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+@media (min-width:720px){.grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}}
+.card{background:var(--box);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;text-align:left;padding:0;transition:transform .18s ease,border-color .18s ease;min-width:0}
+.card:hover{transform:translateY(-2px);border-color:#3d3d46}
+.card-media{position:relative;aspect-ratio:1/1;max-width:100%;background:radial-gradient(120% 90% at 50% 30%,#2a2a31 0%,#16161a 70%);display:grid;place-items:center;overflow:hidden}
+.card-media img{width:100%;height:100%;object-fit:cover}
+.card-media svg{width:84%;height:auto}
+.tag{position:absolute;top:8px;font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:6px}
+.tag-l{left:8px;background:rgba(0,0,0,.6);color:var(--paper);border:1px solid rgba(255,255,255,.12)}
+.tag-r{right:8px;background:var(--kraft);color:var(--kraft-ink)}
+.sold-over{position:absolute;inset:0;background:rgba(10,10,12,.62);display:grid;place-items:center;font-family:var(--f-display);font-weight:900;font-size:22px;letter-spacing:.1em;text-transform:uppercase}
+.card-body{padding:12px 12px 0;display:flex;flex-direction:column;gap:5px;flex:1}
+.brand{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--kraft)}
+.name{font-weight:700;font-size:14.5px;line-height:1.25}
+.cond{font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
+.cond::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.cond.new{color:var(--ok)} .cond.used{color:var(--used)}
+.sizes-mini{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.sizes-mini span{font-family:var(--f-mono);font-size:10.5px;padding:2px 6px;border-radius:5px;background:var(--box-2);color:var(--muted)}
+/* etiqueta de caja */
+.label{margin-top:10px;border-top:1px dashed #3a3a42;padding:9px 12px 11px;display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.price{font-family:var(--f-display);font-weight:800;font-size:23px;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--f-mono);font-size:10px;color:var(--muted);margin-left:3px;font-weight:500}
+.price s{color:var(--muted)}
+.code{font-family:var(--f-mono);font-size:10px;color:var(--muted)}
+.empty{grid-column:1/-1;padding:40px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
+
+/* tallas */
+#tallas,#envios{padding-block:24px 44px;scroll-margin-top:70px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--box)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-variant-numeric:tabular-nums}
+th,td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--line);font-size:14px}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--kraft);font-weight:700;background:var(--box-2)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.info{background:var(--box);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.info h3{margin:0 0 4px;font-family:var(--f-display);font-weight:800;font-size:21px;text-transform:uppercase}
+.info p{margin:0;color:var(--muted);font-size:14px}
+
+footer{border-top:1px solid var(--line);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* modal */
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+@media (min-width:720px){.sheet-bg{align-items:center;padding:24px}}
+.sheet{background:var(--box);border:1px solid var(--line);width:100%;max-width:520px;max-height:92vh;overflow-y:auto;border-radius:20px 20px 0 0;position:relative;padding-bottom:env(safe-area-inset-bottom,0px);animation:up .22s ease}
+@media (min-width:720px){.sheet{border-radius:20px}}
+@keyframes up{from{transform:translateY(24px);opacity:.6}}
+.x{position:absolute;top:10px;right:10px;z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(13,13,15,.75);cursor:pointer;font-size:18px;line-height:1}
+.gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:radial-gradient(120% 90% at 50% 30%,#2a2a31 0%,#16161a 70%)}
+.gallery::-webkit-scrollbar{display:none}
+.gallery>div{flex:none;width:100%;aspect-ratio:1/1;scroll-snap-align:center;display:grid;place-items:center}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery svg{width:82%}
+.dots{display:flex;justify-content:center;gap:6px;padding:10px 0 0}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--paper);width:16px;border-radius:4px}
+.sheet-body{padding:14px 20px 22px;display:grid;gap:14px}
+.sheet-body h2{margin:2px 0 0;font-family:var(--f-display);font-weight:900;font-size:34px;line-height:.95;text-transform:uppercase;text-wrap:balance}
+.big-price{font-family:var(--f-display);font-weight:900;font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.big-price small{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-weight:500;margin-left:4px}
+.lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.size-pick{display:flex;flex-wrap:wrap;gap:8px}
+.size-pick button{min-width:64px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--box-2);cursor:pointer;font-family:var(--f-mono);font-weight:700;font-size:13px}
+.size-pick button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.size-pick.need button{border-color:var(--sold)}
+.hint{font-size:12.5px;color:var(--sold);margin-top:6px}
+.desc{margin:0;color:var(--paper);opacity:.85}
+.msg{background:var(--ink);border:1px dashed #3a3a42;border-radius:12px;padding:12px 14px;font-family:var(--f-mono);font-size:12.5px;line-height:1.55;white-space:pre-wrap;color:var(--paper);user-select:all;-webkit-user-select:all}
+.ig-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:14px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase}
+.ig-btn:hover{background:#fff}
+.ig-btn.off{opacity:.45}
+.sub-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.linkish{background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;color:var(--paper);font-size:12.5px}
+
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:80;background:var(--paper);color:var(--ink);padding:12px 18px;border-radius:12px;font-weight:700;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);max-width:calc(100% - 32px);text-align:center}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Gotty Kicks, inicio"><span class="logo-mark">GK</span><span class="logo-word">Gotty Kicks</span></a>
+    <nav class="nav"><a href="#catalogo">Catálogo</a><a href="#tallas" class="hide-sm">Tallas</a><a href="#envios" class="hide-sm">Envíos</a></nav>
+  </div>
+</header>
+
+<div class="band" aria-hidden="true"><div class="band-track" id="band"></div></div>
+
+<main id="inicio">
+  <section class="wrap hero">
+    <div class="eyebrow">Sneakers 100% originales · Antofagasta, Chile</div>
+    <h1>Gotty <em>Kicks</em></h1>
+    <p>Pares <b>100% originales</b>, nuevos y usados, revisados uno por uno. Elige tu modelo y tu talla, y te lo coordinamos por Instagram.</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="#catalogo">Ver catálogo</a>
+      <a class="btn btn-ghost" href="https://instagram.com/gotty_kicks" target="_blank" rel="noopener">@gotty_kicks</a>
+    </div>
+  </section>
+
+  <section class="wrap steps" aria-label="Cómo pedir">
+    <div class="step"><div class="step-n">1</div><h3>Elige el par</h3><p>Toca la zapatilla que te gustó para ver fotos y detalle.</p></div>
+    <div class="step"><div class="step-n">2</div><h3>Marca tu talla</h3><p>Elige entre las tallas disponibles de ese par.</p></div>
+    <div class="step"><div class="step-n">3</div><h3>Pega y envía</h3><p>Al tocar “Pedir por Instagram” tu mensaje queda copiado. Solo pégalo en nuestro chat.</p></div>
+  </section>
+
+  <section class="wrap" id="catalogo">
+    <div class="sec-head">
+      <div class="eyebrow">El catálogo</div>
+      <h2>Pares disponibles</h2>
+      <p>Precios en pesos chilenos. Solo exhibición: la compra se coordina por mensaje directo.</p>
+    </div>
+    <div class="tools">
+      <label class="search" for="q">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Buscar modelo o código (ej. Black Cat, GK-004)" autocomplete="off">
+      </label>
+      <div class="chips" id="brands" role="group" aria-label="Marca"></div>
+      <div class="row-filters">
+        <select class="sel" id="cond" aria-label="Condición">
+          <option value="">Condición: todas</option>
+          <option value="new">Nuevas</option>
+          <option value="used">Usadas</option>
+        </select>
+        <select class="sel" id="size" aria-label="Talla"><option value="">Talla: todas</option></select>
+        <select class="sel" id="sort" aria-label="Ordenar">
+          <option value="">Destacados</option>
+          <option value="asc">Menor precio</option>
+          <option value="desc">Mayor precio</option>
+        </select>
+        <span class="count" id="count"></span>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="wrap" id="tallas">
+    <div class="sec-head">
+      <div class="eyebrow">Guía rápida</div>
+      <h2>Entiende las tallas</h2>
+      <p>Todas las tallas del catálogo están en US hombre. Si sabes tu talla chilena (EU), búscala aquí.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>US hombre</th><th>UK</th><th>EU / Chile</th><th>CM</th><th>US mujer</th></tr></thead>
+        <tbody id="sizeTable"></tbody>
+      </table>
+    </div>
+    <p class="note">Referencia general Nike / Jordan. Cada marca puede variar media talla; si dudas, pregúntanos por DM.</p>
+  </section>
+
+  <section class="wrap" id="envios">
+    <div class="sec-head">
+      <div class="eyebrow">Despacho</div>
+      <h2>Envíos a todo Chile</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info"><h3>Originales</h3><p>Cada par se revisa antes de publicarse. Lo que ves en las fotos es el estado real.</p></div>
+      <div class="info"><h3>Antofagasta</h3><p>Entrega coordinada en la ciudad. Escríbenos para acordar día y lugar.</p></div>
+      <div class="info"><h3>Resto de Chile</h3><p>Despacho por courier, bien embalado, con número de seguimiento.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Gotty Kicks · Gotty SpA · Antofagasta</span>
+    <a href="https://instagram.com/gotty_kicks" target="_blank" rel="noopener">Instagram @gotty_kicks</a>
+  </div>
+</footer>
+
+<div class="sheet-bg" id="sheetBg" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="pName" id="sheet"></div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN — cambia aquí tu usuario y tus productos
+   ============================================================ */
+const IG_USER = "gotty_kicks";
+
+/* Cada producto:
+   code     código único que te llega en el mensaje
+   brand    marca (crea el filtro automáticamente)
+   name     nombre del modelo
+   price    precio en CLP (número, sin puntos)
+   oldPrice precio anterior tachado (opcional)
+   cond     "new" o "used"   ·  condText: texto que se muestra
+   sizes    tallas disponibles (US)
+   photos   fotos del par (se suben junto al catálogo); vacío = dibujo de ejemplo
+   tint     colores del dibujo de ejemplo [capellada, suela, detalle]
+   available false = aparece como "No disponible"
+   box      true/false: incluye caja
+*/
+const PRODUCTS = [
+  {code:"GK-001", brand:"Jordan", name:"Jordan 4 Retro 'Black Cat'", price:320000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8.5","US 9.5"], box:true, tint:["#151517","#1f1f22","#3a3a3f"], desc:"Par nuevo, sin uso, con caja original."},
+  {code:"GK-002", brand:"Jordan", name:"Jordan 1 Retro High 'Chicago Lost & Found'", price:285000, cond:"new", condText:"Nuevo (DS)", sizes:["US 9","US 10"], box:true, tint:["#f2efe6","#efe3c8","#b8262c"], desc:"Par nuevo con caja. Envejecido de fábrica en la suela, es parte del diseño."},
+  {code:"GK-003", brand:"Jordan", name:"Jordan 3 Retro 'White Cement'", price:175000, cond:"used", condText:"Usado 9/10", sizes:["US 10"], box:false, tint:["#efeeea","#d9d6d0","#8f8b86"], desc:"Pocos usos, sin caja. Suela en muy buen estado."},
+  {code:"GK-004", brand:"Nike", name:"Dunk Low 'Panda'", price:120000, oldPrice:140000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8","US 9","US 10","US 11"], box:true, tint:["#f3f3f1","#ffffff","#141414"], desc:"Par nuevo con caja. Precio rebajado por tiempo limitado."},
+  {code:"GK-005", brand:"Nike", name:"Air Max 1 '86 'Big Bubble'", price:160000, cond:"used", condText:"Usado 8/10", sizes:["US 9.5"], box:true, tint:["#ece8de","#d8cfbf","#2f5aa8"], desc:"Usado, con caja. Detalles leves en la puntera, ver fotos."},
+  {code:"GK-006", brand:"New Balance", name:"New Balance 550 'White Green'", price:110000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8","US 9"], box:true, tint:["#f4f2ec","#efeae0","#2c6e49"], desc:"Par nuevo con caja."},
+  {code:"GK-007", brand:"Adidas", name:"Samba OG 'Cloud White'", price:95000, cond:"new", condText:"Nuevo (DS)", sizes:["US 7.5","US 8.5","US 9.5"], box:true, tint:["#f5f4ef","#a77a4b","#171717"], desc:"Par nuevo con caja."},
+  {code:"GK-008", brand:"Jordan", name:"Jordan 4 Retro 'Military Black'", price:260000, cond:"new", condText:"Nuevo (DS)", sizes:["US 10"], box:true, available:false, tint:["#f1f0ec","#dcdad5","#1a1a1a"], desc:"Agotado. Escríbenos si quieres que te avisemos cuando vuelva."}
+];
+
+/* ============================================================ */
+
+const $ = s => document.querySelector(s);
+const clp = n => "$" + n.toLocaleString("es-CL");
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const sizeNum = s => parseFloat(String(s).replace(/[^\d.]/g,"")) || 0;
+
+/* banda */
+const bandWords = ["100% originales","Sneakers","Antofagasta","Envíos a todo Chile","Jordan","Nike","New Balance","Adidas"];
+$("#band").innerHTML = [...bandWords,...bandWords].map(w=>`<span>${w}</span>`).join("");
+
+/* dibujo de zapatilla genérico (para pares sin foto) */
+function shoe([upper, sole, accent]){
+  return `<svg viewBox="0 0 220 120" role="img" aria-label="Ilustración de ejemplo">
+    <ellipse cx="110" cy="104" rx="92" ry="6" fill="#000" opacity=".35"/>
+    <path d="M22 84 C20 66 30 56 48 52 L86 44 C100 41 108 26 124 24 L142 25 C148 40 160 50 186 57 C200 61 203 74 200 84 Z" fill="${upper}" stroke="#000" stroke-opacity=".35"/>
+    <path d="M60 80 C90 60 130 52 176 60 L186 66 C150 64 112 70 80 84 Z" fill="${accent}" opacity=".9"/>
+    <path d="M124 24 L142 25 C146 36 152 44 162 50 L134 54 C130 44 127 34 124 24 Z" fill="${accent}" opacity=".55"/>
+    <g fill="#000" opacity=".35"><circle cx="100" cy="46" r="2"/><circle cx="108" cy="41" r="2"/><circle cx="116" cy="36" r="2"/><circle cx="124" cy="32" r="2"/></g>
+    <rect x="16" y="82" width="190" height="16" rx="8" fill="${sole}" stroke="#000" stroke-opacity=".3"/>
+    <rect x="16" y="93" width="190" height="5" rx="2.5" fill="#000" opacity=".18"/>
+  </svg>`;
+}
+const media = (p, i=0) => p.photos && p.photos.length ? `<img src="${esc(p.photos[i])}" alt="${esc(p.name)}" loading="lazy">` : shoe(p.tint || ["#ddd","#fff","#333"]);
+
+/* filtros */
+const state = {q:"", brand:"", cond:"", size:"", sort:""};
+const brands = ["Todo", ...new Set(PRODUCTS.map(p=>p.brand))];
+$("#brands").innerHTML = brands.map((b,i)=>`<button class="chip" type="button" data-b="${i?esc(b):""}" aria-pressed="${i===0}">${esc(b)}</button>`).join("");
+$("#brands").addEventListener("click", e=>{
+  const b = e.target.closest(".chip"); if(!b) return;
+  state.brand = b.dataset.b;
+  document.querySelectorAll("#brands .chip").forEach(c=>c.setAttribute("aria-pressed", c===b));
+  render();
+});
+const allSizes = [...new Set(PRODUCTS.flatMap(p=>p.sizes))].sort((a,b)=>sizeNum(a)-sizeNum(b));
+$("#size").insertAdjacentHTML("beforeend", allSizes.map(s=>`<option>${esc(s)}</option>`).join(""));
+$("#q").addEventListener("input", e=>{state.q=e.target.value.trim().toLowerCase(); render();});
+["cond","size","sort"].forEach(id=>$("#"+id).addEventListener("change", e=>{state[id]=e.target.value; render();}));
+
+function render(){
+  let list = PRODUCTS.filter(p=>
+    (!state.brand || p.brand===state.brand) &&
+    (!state.cond || p.cond===state.cond) &&
+    (!state.size || p.sizes.includes(state.size)) &&
+    (!state.q || (p.name+" "+p.brand+" "+p.code).toLowerCase().includes(state.q))
+  );
+  if(state.sort) list = [...list].sort((a,b)=> state.sort==="asc" ? a.price-b.price : b.price-a.price);
+  list = [...list].sort((a,b)=> (a.available===false) - (b.available===false));
+  $("#count").textContent = list.length + (list.length===1 ? " par" : " pares");
+  $("#grid").innerHTML = list.length ? list.map(card).join("") :
+    `<div class="empty">No encontramos pares con esos filtros. Prueba otra talla o escríbenos a @${IG_USER}: quizás lo conseguimos.</div>`;
+}
+function card(p){
+  const off = p.available===false;
+  return `<button class="card" type="button" data-code="${esc(p.code)}" aria-label="${esc(p.name)}, ${clp(p.price)}">
+    <div class="card-media">${media(p)}
+      ${p.box===false?`<span class="tag tag-l">Sin caja</span>`:""}
+      ${p.oldPrice&&!off?`<span class="tag tag-r">Oferta</span>`:""}
+      ${off?`<div class="sold-over">No disponible</div>`:""}
+    </div>
+    <div class="card-body">
+      <div class="brand">${esc(p.brand)}</div>
+      <div class="name">${esc(p.name)}</div>
+      <div class="cond ${p.cond}">${esc(p.condText)}</div>
+      <div class="sizes-mini">${p.sizes.map(s=>`<span>${esc(s)}</span>`).join("")}</div>
+    </div>
+    <div class="label">
+      <span class="price">${off?`<s>${clp(p.price)}</s>`:clp(p.price)}<small>CLP</small></span>
+      <span class="code">${esc(p.code)}</span>
+    </div>
+  </button>`;
+}
+$("#grid").addEventListener("click", e=>{ const c=e.target.closest(".card"); if(c) open(c.dataset.code); });
+
+/* tabla de tallas */
+const SZ = [[7,6,40,25,8.5],[7.5,6.5,40.5,25.5,9],[8,7,41,26,9.5],[8.5,7.5,42,26.5,10],[9,8,42.5,27,10.5],[9.5,8.5,43,27.5,11],[10,9,44,28,11.5],[10.5,9.5,44.5,28.5,12],[11,10,45,29,12.5],[12,11,46,30,13.5]];
+$("#sizeTable").innerHTML = SZ.map(r=>`<tr>${r.map(v=>`<td>${String(v).replace(".",",")}</td>`).join("")}</tr>`).join("");
+
+/* ficha + pedido por Instagram */
+let cur = null, pick = "";
+function message(p, size){
+  return `Hola Gotty Kicks! Me interesa este par:
+• ${p.name}
+• Talla: ${size}
+• Precio: ${clp(p.price)}
+• Código: ${p.code}
+¿Está disponible?`;
+}
+function open(code){
+  const p = PRODUCTS.find(x=>x.code===code); if(!p) return;
+  cur = p; pick = p.sizes.length===1 ? p.sizes[0] : "";
+  const off = p.available===false;
+  const n = p.photos && p.photos.length ? p.photos.length : 1;
+  $("#sheet").innerHTML = `
+    <button class="x" type="button" aria-label="Cerrar" id="close">✕</button>
+    <div class="gallery" id="gal">${Array.from({length:n},(_,i)=>`<div>${media(p,i)}</div>`).join("")}</div>
+    ${n>1?`<div class="dots" id="dots">${Array.from({length:n},(_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`:""}
+    <div class="sheet-body">
+      <div>
+        <div class="brand">${esc(p.brand)} · ${esc(p.code)}</div>
+        <h2 id="pName">${esc(p.name)}</h2>
+      </div>
+      <div>
+        <div class="big-price">${off?`<s>${clp(p.price)}</s>`:clp(p.price)}<small>CLP</small></div>
+        ${p.oldPrice&&!off?`<div class="note">Antes <s>${clp(p.oldPrice)}</s></div>`:""}
+        <div class="cond ${p.cond}" style="margin-top:8px">${esc(p.condText)}${p.box===false?" · sin caja":" · con caja"}</div>
+      </div>
+      <div>
+        <div class="lbl">${off?"Tallas":"Elige tu talla"}</div>
+        <div class="size-pick" id="sizes">${p.sizes.map(s=>`<button type="button" data-s="${esc(s)}" aria-pressed="${s===pick}" ${off?"disabled":""}>${esc(s)}</button>`).join("")}</div>
+        <div class="hint" id="hint" hidden>Elige una talla antes de pedir.</div>
+      </div>
+      ${p.desc?`<div><div class="lbl">Descripción</div><p class="desc">${esc(p.desc)}</p></div>`:""}
+      ${off?`<a class="ig-btn" href="https://ig.me/m/${IG_USER}" target="_blank" rel="noopener" id="igBtn">Avísame si vuelve</a>`:`
+      <div><div class="lbl">Tu mensaje (se copia solo)</div><div class="msg" id="msg"></div></div>
+      <a class="ig-btn" href="https://ig.me/m/${IG_USER}" target="_blank" rel="noopener" id="igBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        Pedir por Instagram</a>
+      <div class="sub-actions"><span>Se abre el chat de @${IG_USER}. Mantén apretado y pega.</span><button class="linkish" type="button" id="copyOnly">Solo copiar</button></div>`}
+    </div>`;
+  $("#sheetBg").hidden = false;
+  document.body.style.overflow = "hidden";
+  updateMsg();
+  $("#close").onclick = close;
+  $("#sizes").onclick = e=>{
+    const b = e.target.closest("button"); if(!b||b.disabled) return;
+    pick = b.dataset.s;
+    document.querySelectorAll("#sizes button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+    $("#sizes").classList.remove("need"); $("#hint").hidden = true;
+    updateMsg();
+  };
+  const gal = $("#gal");
+  if(n>1) gal.addEventListener("scroll", ()=>{ const i=Math.round(gal.scrollLeft/gal.clientWidth); document.querySelectorAll("#dots i").forEach((d,k)=>d.classList.toggle("on",k===i)); }, {passive:true});
+  const ig = $("#igBtn");
+  ig.addEventListener("click", e=>{
+    if(off){ copy(`Hola Gotty Kicks! Avísenme si vuelve el ${p.name} (código ${p.code}).`, "Mensaje copiado. Pégalo en el chat."); return; }
+    if(!pick){ e.preventDefault(); $("#sizes").classList.add("need"); $("#hint").hidden=false; return; }
+    copy(message(p,pick), "Mensaje copiado. Pégalo en el chat de Instagram.");
+  });
+  const co = $("#copyOnly");
+  if(co) co.onclick = ()=>{
+    if(!pick){ $("#sizes").classList.add("need"); $("#hint").hidden=false; return; }
+    copy(message(p,pick), "Mensaje copiado.");
+  };
+}
+function updateMsg(){
+  const m = $("#msg"); if(!m||!cur) return;
+  m.textContent = message(cur, pick || "(elige tu talla)");
+  $("#igBtn").classList.toggle("off", !pick);
+}
+function close(){ $("#sheetBg").hidden = true; document.body.style.overflow = ""; cur = null; }
+$("#sheetBg").addEventListener("click", e=>{ if(e.target.id==="sheetBg") close(); });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape" && cur) close(); });
+
+/* copiar: primero el método antiguo (síncrono, funciona en más navegadores dentro del clic), luego clipboard API */
+function copy(text, okMsg){
+  let ok = false;
+  try{
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0"; ta.style.top="0";
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+    ok = document.execCommand("copy"); ta.remove();
+  }catch(_){}
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>toast(okMsg)).catch(()=>toast(ok?okMsg:"No se pudo copiar. Mantén apretado el mensaje y cópialo."));
+  } else toast(ok?okMsg:"No se pudo copiar. Mantén apretado el mensaje y cópialo.");
+}
+let tt;
+function toast(t){ const el=$("#toast"); el.textContent=t; el.hidden=false; clearTimeout(tt); tt=setTimeout(()=>el.hidden=true, 3200); }
+
+render();
+/* abrir un par directo con el enlace: ...#GK-004 */
+if(/^#GK-\d+$/i.test(location.hash)) open(location.hash.slice(1).toUpperCase());
+</script>
+</body>
+</html>
