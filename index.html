@@ -318,6 +318,8 @@ const PRODUCTS = [
   {cat:"Ropa", code:"GK-203", brand:"Fear of God Essentials", name:"Fear of God Essentials Sweatshorts", price:75000, cond:"new", condText:"Nuevo (DS)", colors:["Stretch Limo","Dark Oatmeal","Light Oatmeal"], sizes:["XS","S","M","L","XL"], photos:["fotos/gk-203-1.jpg"], desc:"Short de buzo nuevo con etiqueta. Mismo precio en los tres colores."},
   {cat:"Ropa", code:"GK-204", brand:"Fear of God Essentials", name:"Fear of God Essentials 1977 Hoodie Off Black", price:120000, cond:"new", condText:"Nuevo (DS)", sizes:["XS","S","M","L","XL"], photos:["fotos/gk-204-1.jpg"], desc:"Polerón 1977 nuevo. Corte oversize."},
   {cat:"Ropa", code:"GK-206", brand:"Fear of God Essentials", name:"Fear of God Essentials Hoodie Desert Taupe", price:120000, cond:"new", condText:"Nuevo (DS)", sizes:["S","M","L"], photos:["fotos/gk-206-1.jpg"], desc:"Polerón nuevo, logo reflectante al frente. Corte oversize."},
+  {cat:"Zapatillas", code:"GK-021", brand:"Yeezy", name:"Yeezy Slide YS01 Black", price:79990, cond:"new", condText:"Nuevo (DS)", sizes:["US 5","US 6","US 7","US 8","US 9","US 10","US 11","US 12","US 13"], photos:["fotos/gk-021-1.jpg"], desc:"Slide nueva, con bolsa."},
+  {cat:"Zapatillas", code:"GK-022", brand:"Yeezy", name:"Yeezy Slide YS01 Cream", price:79990, cond:"new", condText:"Nuevo (DS)", sizes:["US 5","US 6","US 7","US 8","US 9","US 10","US 11","US 12","US 13"], photos:["fotos/gk-022-1.jpg"], desc:"Slide nueva, con bolsa."},
   /* ---------- EJEMPLOS (se borran al terminar de cargar) ---------- */
   {cat:"Zapatillas", code:"GK-001", brand:"Jordan", name:"Jordan 4 Retro Black Cat (2020)", price:320000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8.5","US 9.5"], box:true, tint:["#151517","#1f1f22","#3a3a3f"], desc:"Par nuevo, sin uso, con caja original."},
   {cat:"Zapatillas", code:"GK-002", brand:"Jordan", name:"Jordan 1 Retro High OG Chicago Lost and Found", price:285000, cond:"new", condText:"Nuevo (DS)", sizes:["US 9","US 10"], box:true, tint:["#f2efe6","#efe3c8","#b8262c"], desc:"Par nuevo con caja. Envejecido de fábrica en la suela, es parte del diseño."},
@@ -467,7 +469,7 @@ function open(code){
       <div>
         <div class="big-price">${off?`<s>${clp(p.price)}</s>`:clp(p.price)}<small>CLP</small></div>
         ${p.oldPrice&&!off?`<div class="note">Antes <s>${clp(p.oldPrice)}</s></div>`:""}
-        <div class="cond ${p.cond}" style="margin-top:8px">${esc(p.condText)}${p.cat==="Ropa"?"":(p.box===false?" · sin caja":" · con caja")}</div>
+        <div class="cond ${p.cond}" style="margin-top:8px">${esc(p.condText)}${p.cat==="Ropa"||p.box==null?"":(p.box===false?" · sin caja":" · con caja")}</div>
       </div>
       ${p.colors&&p.colors.length?`<div>
         <div class="lbl">${off?"Colores":"Elige el color"}</div>
