@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Catálogo de sneakers 100% originales de Gotty Kicks. Pide por Instagram @gotty_kicks.">
+<meta name="description" content="Catálogo de sneakers y ropa 100% originales de Gotty Kicks. Pide por Instagram @gotty_kicks.">
 <style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
 <title>Gotty Kicks Catálogo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,7 +118,7 @@ button{font:inherit;color:inherit}
 .price{font-family:var(--f-display);font-weight:800;font-size:23px;letter-spacing:.01em;font-variant-numeric:tabular-nums}
 .price small{font-family:var(--f-mono);font-size:10px;color:var(--muted);margin-left:3px;font-weight:500}
 .price s{color:var(--muted)}
-.code{font-family:var(--f-mono);font-size:10px;color:var(--muted)}
+.code{font-family:var(--f-mono);font-size:10px;color:var(--muted);white-space:nowrap}
 .empty{grid-column:1/-1;padding:40px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
 
 /* tallas */
@@ -188,9 +188,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <main id="inicio">
   <section class="wrap hero">
-    <div class="eyebrow">Sneakers 100% originales · Antofagasta, Chile</div>
+    <div class="eyebrow">Sneakers y ropa 100% originales · Antofagasta, Chile</div>
     <h1>Gotty <em>Kicks</em></h1>
-    <p>Pares <b>100% originales</b>, nuevos y usados, revisados uno por uno. Elige tu modelo y tu talla, y te lo coordinamos por Instagram.</p>
+    <p>Zapatillas y ropa <b>100% originales</b>, nuevas y usadas, revisadas una por una. Elige tu producto y tu talla, y te lo coordinamos por Instagram.</p>
     <div class="cta-row">
       <a class="btn btn-solid" href="#catalogo">Ver catálogo</a>
       <a class="btn btn-ghost" href="https://instagram.com/gotty_kicks" target="_blank" rel="noopener">@gotty_kicks</a>
@@ -198,24 +198,25 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </section>
 
   <section class="wrap steps" aria-label="Cómo pedir">
-    <div class="step"><div class="step-n">1</div><h3>Elige el par</h3><p>Toca la zapatilla que te gustó para ver fotos y detalle.</p></div>
-    <div class="step"><div class="step-n">2</div><h3>Marca tu talla</h3><p>Elige entre las tallas disponibles de ese par.</p></div>
+    <div class="step"><div class="step-n">1</div><h3>Elige el producto</h3><p>Toca lo que te gustó para ver fotos y detalle.</p></div>
+    <div class="step"><div class="step-n">2</div><h3>Marca tu talla</h3><p>Elige entre las tallas disponibles de ese producto.</p></div>
     <div class="step"><div class="step-n">3</div><h3>Pega y envía</h3><p>Al tocar “Pedir por Instagram” tu mensaje queda copiado. Solo pégalo en nuestro chat.</p></div>
   </section>
 
   <section class="wrap" id="catalogo">
     <div class="sec-head">
       <div class="eyebrow">El catálogo</div>
-      <h2>Pares disponibles</h2>
+      <h2>Zapatillas y ropa</h2>
       <p>Precios en pesos chilenos. Solo exhibición: la compra se coordina por mensaje directo.</p>
     </div>
     <div class="tools">
       <label class="search" for="q">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="q" type="search" placeholder="Buscar modelo o código (ej. Black Cat, GK-004)" autocomplete="off">
+        <input id="q" type="search" placeholder="Buscar marca, modelo o código (ej. Jordan, GK-004)" autocomplete="off">
       </label>
-      <div class="chips" id="brands" role="group" aria-label="Marca"></div>
+      <div class="chips" id="cats" role="group" aria-label="Categoría"></div>
       <div class="row-filters">
+        <select class="sel" id="brand" aria-label="Marca"><option value="">Marca: todas</option></select>
         <select class="sel" id="cond" aria-label="Condición">
           <option value="">Condición: todas</option>
           <option value="new">Nuevas</option>
@@ -237,8 +238,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="sec-head">
       <div class="eyebrow">Guía rápida</div>
       <h2>Entiende las tallas</h2>
-      <p>Todas las tallas del catálogo están en US hombre. Si sabes tu talla chilena (EU), búscala aquí.</p>
+      <p>Zapatillas en talla US hombre. Ropa en tallas de cada marca (XS a XXL).</p>
     </div>
+    <div class="chips" id="sizeTabs" role="group" aria-label="Tipo de talla" style="margin-bottom:12px">
+      <button class="chip" type="button" data-t="z" aria-pressed="true">Zapatillas</button>
+      <button class="chip" type="button" data-t="r" aria-pressed="false">Ropa</button>
+    </div>
+    <div id="tabZ">
     <div class="table-wrap">
       <table>
         <thead><tr><th>US hombre</th><th>UK</th><th>EU / Chile</th><th>CM</th><th>US mujer</th></tr></thead>
@@ -246,6 +252,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       </table>
     </div>
     <p class="note">Referencia general Nike / Jordan. Cada marca puede variar media talla; si dudas, pregúntanos por DM.</p>
+    </div>
+    <div id="tabR" hidden>
+      <div class="info-grid">
+        <div class="info"><h3>Talla de la marca</h3><p>Cada prenda aparece con la talla que trae en la etiqueta. Marcas como Fear of God Essentials son anchas (oversize); si te gusta más ajustado, considera una talla menos.</p></div>
+        <div class="info"><h3>Medidas exactas</h3><p>Pídenos por DM el ancho (axila a axila) y el largo de la prenda. Compáralo con una polera tuya que te quede bien.</p></div>
+      </div>
+    </div>
   </section>
 
   <section class="wrap" id="envios">
@@ -254,7 +267,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <h2>Envíos a todo Chile</h2>
     </div>
     <div class="info-grid">
-      <div class="info"><h3>Originales</h3><p>Cada par se revisa antes de publicarse. Lo que ves en las fotos es el estado real.</p></div>
+      <div class="info"><h3>Originales</h3><p>Cada producto se revisa antes de publicarse. Lo que ves en las fotos es el estado real.</p></div>
       <div class="info"><h3>Antofagasta</h3><p>Entrega coordinada en la ciudad. Escríbenos para acordar día y lugar.</p></div>
       <div class="info"><h3>Resto de Chile</h3><p>Despacho por courier, bien embalado, con número de seguimiento.</p></div>
     </div>
@@ -280,27 +293,33 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 const IG_USER = "gotty_kicks";
 
 /* Cada producto:
+   cat      "Zapatillas" o "Ropa" (crea las pestañas de arriba)
+   kind     solo ropa, para el dibujo de ejemplo: "polera" o "poleron"
    code     código único que te llega en el mensaje
    brand    marca (crea el filtro automáticamente)
-   name     nombre del modelo
+   name     nombre del modelo, tal como aparece en StockX
    price    precio en CLP (número, sin puntos)
    oldPrice precio anterior tachado (opcional)
    cond     "new" o "used"   ·  condText: texto que se muestra
-   sizes    tallas disponibles (US)
+   sizes    tallas disponibles (zapatillas: "US 9"; ropa: "M")
    photos   fotos del par (se suben junto al catálogo); vacío = dibujo de ejemplo
    tint     colores del dibujo de ejemplo [capellada, suela, detalle]
    available false = aparece como "No disponible"
-   box      true/false: incluye caja
+   box      true/false: incluye caja (solo zapatillas)
 */
 const PRODUCTS = [
-  {code:"GK-001", brand:"Jordan", name:"Jordan 4 Retro 'Black Cat'", price:320000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8.5","US 9.5"], box:true, tint:["#151517","#1f1f22","#3a3a3f"], desc:"Par nuevo, sin uso, con caja original."},
-  {code:"GK-002", brand:"Jordan", name:"Jordan 1 Retro High 'Chicago Lost & Found'", price:285000, cond:"new", condText:"Nuevo (DS)", sizes:["US 9","US 10"], box:true, tint:["#f2efe6","#efe3c8","#b8262c"], desc:"Par nuevo con caja. Envejecido de fábrica en la suela, es parte del diseño."},
-  {code:"GK-003", brand:"Jordan", name:"Jordan 3 Retro 'White Cement'", price:175000, cond:"used", condText:"Usado 9/10", sizes:["US 10"], box:false, tint:["#efeeea","#d9d6d0","#8f8b86"], desc:"Pocos usos, sin caja. Suela en muy buen estado."},
-  {code:"GK-004", brand:"Nike", name:"Dunk Low 'Panda'", price:120000, oldPrice:140000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8","US 9","US 10","US 11"], box:true, tint:["#f3f3f1","#ffffff","#141414"], desc:"Par nuevo con caja. Precio rebajado por tiempo limitado."},
-  {code:"GK-005", brand:"Nike", name:"Air Max 1 '86 'Big Bubble'", price:160000, cond:"used", condText:"Usado 8/10", sizes:["US 9.5"], box:true, tint:["#ece8de","#d8cfbf","#2f5aa8"], desc:"Usado, con caja. Detalles leves en la puntera, ver fotos."},
-  {code:"GK-006", brand:"New Balance", name:"New Balance 550 'White Green'", price:110000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8","US 9"], box:true, tint:["#f4f2ec","#efeae0","#2c6e49"], desc:"Par nuevo con caja."},
-  {code:"GK-007", brand:"Adidas", name:"Samba OG 'Cloud White'", price:95000, cond:"new", condText:"Nuevo (DS)", sizes:["US 7.5","US 8.5","US 9.5"], box:true, tint:["#f5f4ef","#a77a4b","#171717"], desc:"Par nuevo con caja."},
-  {code:"GK-008", brand:"Jordan", name:"Jordan 4 Retro 'Military Black'", price:260000, cond:"new", condText:"Nuevo (DS)", sizes:["US 10"], box:true, available:false, tint:["#f1f0ec","#dcdad5","#1a1a1a"], desc:"Agotado. Escríbenos si quieres que te avisemos cuando vuelva."}
+  {cat:"Zapatillas", code:"GK-001", brand:"Jordan", name:"Jordan 4 Retro Black Cat (2020)", price:320000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8.5","US 9.5"], box:true, tint:["#151517","#1f1f22","#3a3a3f"], desc:"Par nuevo, sin uso, con caja original."},
+  {cat:"Zapatillas", code:"GK-002", brand:"Jordan", name:"Jordan 1 Retro High OG Chicago Lost and Found", price:285000, cond:"new", condText:"Nuevo (DS)", sizes:["US 9","US 10"], box:true, tint:["#f2efe6","#efe3c8","#b8262c"], desc:"Par nuevo con caja. Envejecido de fábrica en la suela, es parte del diseño."},
+  {cat:"Zapatillas", code:"GK-003", brand:"Jordan", name:"Jordan 3 Retro White Cement Reimagined", price:175000, cond:"used", condText:"Usado 9/10", sizes:["US 10"], box:false, tint:["#efeeea","#d9d6d0","#8f8b86"], desc:"Pocos usos, sin caja. Suela en muy buen estado."},
+  {cat:"Zapatillas", code:"GK-004", brand:"Nike", name:"Nike Dunk Low Retro White Black Panda", price:120000, oldPrice:140000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8","US 9","US 10","US 11"], box:true, tint:["#f3f3f1","#ffffff","#141414"], desc:"Par nuevo con caja. Precio rebajado por tiempo limitado."},
+  {cat:"Zapatillas", code:"GK-005", brand:"Nike", name:"Nike Air Force 1 Low '07 White", price:160000, cond:"used", condText:"Usado 8/10", sizes:["US 9.5"], box:true, tint:["#ece8de","#d8cfbf","#2f5aa8"], desc:"Usado, con caja. Detalles leves en la puntera, ver fotos."},
+  {cat:"Zapatillas", code:"GK-006", brand:"New Balance", name:"New Balance 550 White Green", price:110000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8","US 9"], box:true, tint:["#f4f2ec","#efeae0","#2c6e49"], desc:"Par nuevo con caja."},
+  {cat:"Zapatillas", code:"GK-007", brand:"adidas", name:"adidas Samba OG Cloud White Core Black", price:95000, cond:"new", condText:"Nuevo (DS)", sizes:["US 7.5","US 8.5","US 9.5"], box:true, tint:["#f5f4ef","#a77a4b","#171717"], desc:"Par nuevo con caja."},
+  {cat:"Zapatillas", code:"GK-008", brand:"Jordan", name:"Jordan 4 Retro Military Black", price:260000, cond:"new", condText:"Nuevo (DS)", sizes:["US 10"], box:true, available:false, tint:["#f1f0ec","#dcdad5","#1a1a1a"], desc:"Agotado. Escríbenos si quieres que te avisemos cuando vuelva."},
+  {cat:"Ropa", kind:"poleron", code:"GK-101", brand:"Fear of God Essentials", name:"Fear of God Essentials Hoodie Dark Oatmeal", price:110000, cond:"new", condText:"Nueva con etiqueta", sizes:["S","M","L"], tint:["#8a8070","#6f6658"], desc:"Polerón nuevo con etiqueta. Corte oversize."},
+  {cat:"Ropa", kind:"polera", code:"GK-102", brand:"Fear of God Essentials", name:"Fear of God Essentials T-shirt Black", price:55000, cond:"new", condText:"Nueva con etiqueta", sizes:["M","L","XL"], tint:["#18181b","#2a2a2e"], desc:"Polera nueva con etiqueta. Corte oversize."},
+  {cat:"Ropa", kind:"polera", code:"GK-103", brand:"Stussy", name:"Stussy World Tour Tee White", price:65000, cond:"new", condText:"Nueva", sizes:["L"], tint:["#f2f0eb","#d9d5cc"], desc:"Polera nueva, logo estampado en la espalda."},
+  {cat:"Ropa", kind:"poleron", code:"GK-104", brand:"Nike", name:"Nike Sportswear Tech Fleece Full-Zip Hoodie Dark Grey Heather", price:85000, oldPrice:99000, cond:"used", condText:"Usado 9/10", sizes:["M"], tint:["#7c7f86","#5d6067"], desc:"Usado pocas veces, sin detalles."}
 ];
 
 /* ============================================================ */
@@ -308,10 +327,11 @@ const PRODUCTS = [
 const $ = s => document.querySelector(s);
 const clp = n => "$" + n.toLocaleString("es-CL");
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const sizeNum = s => parseFloat(String(s).replace(/[^\d.]/g,"")) || 0;
+const CLOTH = ["XXS","XS","S","M","L","XL","XXL","XXXL"];
+const sizeNum = s => CLOTH.includes(s) ? 100 + CLOTH.indexOf(s) : (parseFloat(String(s).replace(/[^\d.]/g,"")) || 0);
 
 /* banda */
-const bandWords = ["100% originales","Sneakers","Antofagasta","Envíos a todo Chile","Jordan","Nike","New Balance","Adidas"];
+const bandWords = ["100% originales","Sneakers","Ropa","Antofagasta","Envíos a todo Chile","Jordan","Nike","New Balance","adidas","Essentials"];
 $("#band").innerHTML = [...bandWords,...bandWords].map(w=>`<span>${w}</span>`).join("");
 
 /* dibujo de zapatilla genérico (para pares sin foto) */
@@ -326,25 +346,47 @@ function shoe([upper, sole, accent]){
     <rect x="16" y="93" width="190" height="5" rx="2.5" fill="#000" opacity=".18"/>
   </svg>`;
 }
-const media = (p, i=0) => p.photos && p.photos.length ? `<img src="${esc(p.photos[i])}" alt="${esc(p.name)}" loading="lazy">` : shoe(p.tint || ["#ddd","#fff","#333"]);
+/* dibujo de prenda genérico (para ropa sin foto) */
+function garment(kind, [body, trim]){
+  const hood = kind==="poleron";
+  return `<svg viewBox="0 0 220 200" role="img" aria-label="Ilustración de ejemplo" style="width:62%">
+    <ellipse cx="110" cy="188" rx="70" ry="5" fill="#000" opacity=".35"/>
+    <path d="M78 22 L46 32 L10 ${hood?96:70} L36 ${hood?110:84} L56 ${hood?70:58} L56 176 L164 176 L164 ${hood?70:58} L184 ${hood?110:84} L210 ${hood?96:70} L174 32 L142 22 C136 36 124 42 110 42 C96 42 84 36 78 22 Z" fill="${body}" stroke="#000" stroke-opacity=".35"/>
+    ${hood?`<path d="M78 22 C80 4 140 4 142 22 C136 40 124 48 110 48 C96 48 84 40 78 22 Z" fill="${trim}" stroke="#000" stroke-opacity=".3"/>
+    <path d="M104 48 L102 82 M116 48 L118 82" stroke="#000" stroke-opacity=".35" stroke-width="2"/>
+    <path d="M76 128 L144 128 L150 160 L70 160 Z" fill="${trim}" opacity=".7"/>
+    <rect x="56" y="166" width="108" height="10" fill="${trim}"/>`:`<path d="M78 22 C84 36 96 42 110 42 C124 42 136 36 142 22" fill="none" stroke="${trim}" stroke-width="5"/>`}
+  </svg>`;
+}
+const media = (p, i=0) => p.photos && p.photos.length ? `<img src="${esc(p.photos[i])}" alt="${esc(p.name)}" loading="lazy">` : (p.cat==="Ropa" ? garment(p.kind, p.tint || ["#444","#333"]) : shoe(p.tint || ["#ddd","#fff","#333"]));
 
 /* filtros */
-const state = {q:"", brand:"", cond:"", size:"", sort:""};
-const brands = ["Todo", ...new Set(PRODUCTS.map(p=>p.brand))];
-$("#brands").innerHTML = brands.map((b,i)=>`<button class="chip" type="button" data-b="${i?esc(b):""}" aria-pressed="${i===0}">${esc(b)}</button>`).join("");
-$("#brands").addEventListener("click", e=>{
+const state = {q:"", cat:"", brand:"", cond:"", size:"", sort:""};
+const cats = ["Todo", ...new Set(PRODUCTS.map(p=>p.cat))];
+$("#cats").innerHTML = cats.map((c,i)=>`<button class="chip" type="button" data-c="${i?esc(c):""}" aria-pressed="${i===0}">${esc(c)}</button>`).join("");
+$("#cats").addEventListener("click", e=>{
   const b = e.target.closest(".chip"); if(!b) return;
-  state.brand = b.dataset.b;
-  document.querySelectorAll("#brands .chip").forEach(c=>c.setAttribute("aria-pressed", c===b));
-  render();
+  state.cat = b.dataset.c;
+  document.querySelectorAll("#cats .chip").forEach(c=>c.setAttribute("aria-pressed", c===b));
+  fillSelects(); render();
 });
-const allSizes = [...new Set(PRODUCTS.flatMap(p=>p.sizes))].sort((a,b)=>sizeNum(a)-sizeNum(b));
-$("#size").insertAdjacentHTML("beforeend", allSizes.map(s=>`<option>${esc(s)}</option>`).join(""));
+/* marcas y tallas se ajustan a la categoría elegida */
+function fillSelects(){
+  const pool = PRODUCTS.filter(p=>!state.cat || p.cat===state.cat);
+  const brands = [...new Set(pool.map(p=>p.brand))].sort();
+  const sizes = [...new Set(pool.flatMap(p=>p.sizes))].sort((a,b)=>sizeNum(a)-sizeNum(b));
+  if(!brands.includes(state.brand)) state.brand = "";
+  if(!sizes.includes(state.size)) state.size = "";
+  $("#brand").innerHTML = `<option value="">Marca: todas</option>` + brands.map(b=>`<option${b===state.brand?" selected":""}>${esc(b)}</option>`).join("");
+  $("#size").innerHTML = `<option value="">Talla: todas</option>` + sizes.map(s=>`<option${s===state.size?" selected":""}>${esc(s)}</option>`).join("");
+}
+fillSelects();
 $("#q").addEventListener("input", e=>{state.q=e.target.value.trim().toLowerCase(); render();});
-["cond","size","sort"].forEach(id=>$("#"+id).addEventListener("change", e=>{state[id]=e.target.value; render();}));
+["brand","cond","size","sort"].forEach(id=>$("#"+id).addEventListener("change", e=>{state[id]=e.target.value; render();}));
 
 function render(){
   let list = PRODUCTS.filter(p=>
+    (!state.cat || p.cat===state.cat) &&
     (!state.brand || p.brand===state.brand) &&
     (!state.cond || p.cond===state.cond) &&
     (!state.size || p.sizes.includes(state.size)) &&
@@ -352,15 +394,15 @@ function render(){
   );
   if(state.sort) list = [...list].sort((a,b)=> state.sort==="asc" ? a.price-b.price : b.price-a.price);
   list = [...list].sort((a,b)=> (a.available===false) - (b.available===false));
-  $("#count").textContent = list.length + (list.length===1 ? " par" : " pares");
+  $("#count").textContent = list.length + (list.length===1 ? " producto" : " productos");
   $("#grid").innerHTML = list.length ? list.map(card).join("") :
-    `<div class="empty">No encontramos pares con esos filtros. Prueba otra talla o escríbenos a @${IG_USER}: quizás lo conseguimos.</div>`;
+    `<div class="empty">No encontramos productos con esos filtros. Prueba otra talla o escríbenos a @${IG_USER}: quizás lo conseguimos.</div>`;
 }
 function card(p){
   const off = p.available===false;
   return `<button class="card" type="button" data-code="${esc(p.code)}" aria-label="${esc(p.name)}, ${clp(p.price)}">
     <div class="card-media">${media(p)}
-      ${p.box===false?`<span class="tag tag-l">Sin caja</span>`:""}
+      ${p.cat!=="Ropa"&&p.box===false?`<span class="tag tag-l">Sin caja</span>`:""}
       ${p.oldPrice&&!off?`<span class="tag tag-r">Oferta</span>`:""}
       ${off?`<div class="sold-over">No disponible</div>`:""}
     </div>
@@ -380,12 +422,17 @@ $("#grid").addEventListener("click", e=>{ const c=e.target.closest(".card"); if(
 
 /* tabla de tallas */
 const SZ = [[7,6,40,25,8.5],[7.5,6.5,40.5,25.5,9],[8,7,41,26,9.5],[8.5,7.5,42,26.5,10],[9,8,42.5,27,10.5],[9.5,8.5,43,27.5,11],[10,9,44,28,11.5],[10.5,9.5,44.5,28.5,12],[11,10,45,29,12.5],[12,11,46,30,13.5]];
+$("#sizeTabs").addEventListener("click", e=>{
+  const b = e.target.closest(".chip"); if(!b) return;
+  document.querySelectorAll("#sizeTabs .chip").forEach(c=>c.setAttribute("aria-pressed", c===b));
+  $("#tabZ").hidden = b.dataset.t!=="z"; $("#tabR").hidden = b.dataset.t!=="r";
+});
 $("#sizeTable").innerHTML = SZ.map(r=>`<tr>${r.map(v=>`<td>${String(v).replace(".",",")}</td>`).join("")}</tr>`).join("");
 
 /* ficha + pedido por Instagram */
 let cur = null, pick = "";
 function message(p, size){
-  return `Hola Gotty Kicks! Me interesa este par:
+  return `Hola Gotty Kicks! Me interesa este producto:
 • ${p.name}
 • Talla: ${size}
 • Precio: ${clp(p.price)}
@@ -409,7 +456,7 @@ function open(code){
       <div>
         <div class="big-price">${off?`<s>${clp(p.price)}</s>`:clp(p.price)}<small>CLP</small></div>
         ${p.oldPrice&&!off?`<div class="note">Antes <s>${clp(p.oldPrice)}</s></div>`:""}
-        <div class="cond ${p.cond}" style="margin-top:8px">${esc(p.condText)}${p.box===false?" · sin caja":" · con caja"}</div>
+        <div class="cond ${p.cond}" style="margin-top:8px">${esc(p.condText)}${p.cat==="Ropa"?"":(p.box===false?" · sin caja":" · con caja")}</div>
       </div>
       <div>
         <div class="lbl">${off?"Tallas":"Elige tu talla"}</div>
