@@ -115,10 +115,10 @@ button{font:inherit;color:inherit}
 .sizes-mini span{font-family:var(--f-mono);font-size:10.5px;padding:2px 6px;border-radius:5px;background:var(--box-2);color:var(--muted)}
 /* etiqueta de caja */
 .label{margin-top:10px;border-top:1px dashed #3a3a42;padding:9px 12px 11px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 8px}
-.price{font-family:var(--f-display);font-weight:800;font-size:23px;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.price{font-family:var(--f-display);font-weight:800;font-size:23px;letter-spacing:.01em;font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}
 .price small{font-family:var(--f-mono);font-size:10px;color:var(--muted);margin-left:3px;font-weight:500}
 .price s{color:var(--muted)}
-.code{font-family:var(--f-mono);font-size:10px;color:var(--muted);white-space:nowrap}
+.code{color:var(--muted);white-space:nowrap}
 .empty{grid-column:1/-1;padding:40px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
 
 /* tallas */
@@ -470,7 +470,7 @@ function card(p){
       ${off?`<div class="sold-over">Agotado</div>`:""}
     </div>
     <div class="card-body">
-      <div class="brand">${esc(p.brand)}</div>
+      <div class="brand">${esc(p.brand)} <span class="code">· ${esc(p.code)}</span></div>
       <div class="name">${esc(p.name)}</div>
       <div class="cond ${p.cond}">${esc(p.condText)}</div>
       ${p.colors&&p.colors.length>1?`<div class="cond" style="color:var(--muted)">${p.colors.length} colores</div>`:""}
@@ -478,7 +478,6 @@ function card(p){
     </div>
     <div class="label">
       <span class="price">${off?`<s>${clp(p.price)}</s>`:clp(p.price)}<small>CLP</small></span>
-      <span class="code">${esc(p.code)}</span>
     </div>
   </button>`;
 }
