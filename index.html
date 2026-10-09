@@ -402,6 +402,7 @@ const PRODUCTS = [
   {cat:"Zapatillas", code:"GK-046", brand:"Jordan", name:"Jordan 5 Retro Fire Red", price:199990, cond:"new", condText:"Nuevo (DS)", sizes:["US 10"], photos:["fotos/gk-046-1.jpg","fotos/gk-046-2.jpg","fotos/gk-046-3.jpg","fotos/gk-046-4.jpg","fotos/gk-046-5.jpg"], desc:"Par nuevo. Cuero blanco con rojo y negro, número 23 bordado, Nike Air en el talón y suela translúcida."},
   {cat:"Zapatillas", code:"GK-047", brand:"Jordan", name:"Jordan 5 Retro White Metallic (2026)", price:175000, cond:"used", condText:"Probadas, como nuevas", sizes:["US 11.5"], photos:["fotos/gk-047-1.jpg","fotos/gk-047-2.jpg","fotos/gk-047-3.jpg","fotos/gk-047-4.jpg","fotos/gk-047-5.jpg"], desc:"Par solo probado, sin uso en la calle. Cuero blanco con detalles plateados, número 23 bordado, Nike Air en el talón y suela translúcida."},
   {cat:"Zapatillas", code:"GK-048", brand:"Jordan", name:"Jordan 1 Retro High UNC to Chicago (Women's)", price:65000, cond:"used", condText:"Usado, muy buen estado", sizes:["6 W · 23 cm"], sizeNote:"Talla de mujer (WMNS). Al lado va el largo en centímetros para que encuentres tu equivalencia.", box:true, photos:["fotos/gk-048-1.jpg","fotos/gk-048-2.jpg","fotos/gk-048-3.jpg","fotos/gk-048-4.jpg","fotos/gk-048-5.jpg"], desc:"Par usado en muy buen estado, con caja. Ver fotos de la suela."},
+  {cat:"Zapatillas", code:"GK-049", brand:"adidas", name:"adidas BadBo 1.0 Bad Bunny Rise", price:150000, cond:"new", condText:"Nuevo (DS)", sizes:["US 7.5"], photos:["fotos/gk-049-1.jpg","fotos/gk-049-2.jpg","fotos/gk-049-3.jpg","fotos/gk-049-4.jpg"], desc:"Par nuevo. Colaboración adidas x Bad Bunny: suede off white con detalles negros, acentos azules y suela gum."},
   /* ---------- EJEMPLOS (se borran al terminar de cargar) ---------- */
   {cat:"Zapatillas", code:"GK-001", brand:"Jordan", name:"Jordan 4 Retro Black Cat (2020)", price:320000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8.5","US 9.5"], box:true, tint:["#151517","#1f1f22","#3a3a3f"], desc:"Par nuevo, sin uso, con caja original."},
   {cat:"Zapatillas", code:"GK-002", brand:"Jordan", name:"Jordan 1 Retro High OG Chicago Lost and Found", price:285000, cond:"new", condText:"Nuevo (DS)", sizes:["US 9","US 10"], box:true, tint:["#f2efe6","#efe3c8","#b8262c"], desc:"Par nuevo con caja. Envejecido de fábrica en la suela, es parte del diseño."},
@@ -425,7 +426,7 @@ const avail = p => p.sizes.filter(s=>!(p.soldSizes||[]).includes(s));
 const sizeNum = s => CLOTH.includes(s) ? 100 + CLOTH.indexOf(s) : (parseFloat(String(s).replace(/[^\d.]/g,"")) || 0);
 
 /* banda */
-const bandWords = ["100% originales","Sneakers","Ropa","Antofagasta","Envíos a todo Chile","Jordan","Nike","BAPE","Yeezy","Essentials","Gods","Billionaire Boys Club","YoungLA","Hoopers","Undefeated","Off-White","NOCTA"];
+const bandWords = ["100% originales","Sneakers","Ropa","Antofagasta","Envíos a todo Chile","Jordan","Nike","BAPE","Yeezy","Essentials","Gods","Billionaire Boys Club","YoungLA","Hoopers","Undefeated","Off-White","NOCTA","Bad Bunny"];
 $("#band").innerHTML = [...bandWords,...bandWords].map(w=>`<span>${w}</span>`).join("");
 
 /* dibujo de zapatilla genérico (para pares sin foto) */
