@@ -280,6 +280,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div class="info"><h3>Envío por pagar</h3><p>Despachamos a todo Chile. El envío se paga al recibir.</p></div>
       <div class="info"><h3>Tarjeta de crédito</h3><p>También puedes pagar con tarjeta de crédito. Coordinamos el pago por DM.</p></div>
       <div class="info"><h3>Tus pares como pago</h3><p>Aceptamos zapatillas como parte de pago. Mándanos fotos por DM y te hacemos una oferta.</p></div>
+      <div class="info"><h3>Reserva con abono</h3><p>Aparta tu producto con un abono y termina de pagarlo hasta fin de mes. El monto del abono y los plazos los conversamos por DM.</p></div>
     </div>
   </section>
 </main>
@@ -426,7 +427,7 @@ const avail = p => p.sizes.filter(s=>!(p.soldSizes||[]).includes(s));
 const sizeNum = s => CLOTH.includes(s) ? 100 + CLOTH.indexOf(s) : (parseFloat(String(s).replace(/[^\d.]/g,"")) || 0);
 
 /* banda */
-const bandWords = ["100% originales","Sneakers","Ropa","Antofagasta","Envíos a todo Chile","Jordan","Nike","BAPE","Yeezy","Essentials","Gods","Billionaire Boys Club","YoungLA","Hoopers","Undefeated","Off-White","NOCTA","Bad Bunny","Gotty Hats"];
+const bandWords = ["100% originales","Sneakers","Ropa","Antofagasta","Envíos a todo Chile","Recibimos abonos","Jordan","Nike","BAPE","Yeezy","Essentials","Gods","Billionaire Boys Club","YoungLA","Hoopers","Undefeated","Off-White","NOCTA","Bad Bunny","Gotty Hats"];
 $("#band").innerHTML = [...bandWords,...bandWords].map(w=>`<span>${w}</span>`).join("");
 
 /* dibujo de zapatilla genérico (para pares sin foto) */
@@ -575,6 +576,7 @@ function open(code){
       <a class="ig-btn" href="https://ig.me/m/${IG_USER}" target="_blank" rel="noopener" id="igBtn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
         Pedir por Instagram</a>
+      <p class="note" style="margin:0">¿Quieres reservarlo? Recibimos abonos hasta fin de mes; monto y plazos se conversan por DM.</p>
       <div class="sub-actions"><span>Se abre el chat de @${IG_USER}. Mantén apretado y pega.</span><button class="linkish" type="button" id="copyOnly">Solo copiar</button></div>`}
     </div>`;
   $("#sheetBg").hidden = false;
