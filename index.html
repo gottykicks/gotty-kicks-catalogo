@@ -383,6 +383,7 @@ const PRODUCTS = [
   {cat:"Ropa", code:"GK-235", brand:"YoungLA", name:"YoungLA Baggy Sweats Black Wash", price:80000, cond:"new", condText:"Nuevo", sizes:["S"], photos:["fotos/gk-235-1.jpg"], desc:"Buzo baggy nuevo, negro deslavado. Logo ovalado YoungLA en la pierna, cintura elástica con cordón."},
   {cat:"Ropa", code:"GK-236", brand:"YoungLA", name:"YoungLA Flame Chain Distressed Tee Black", price:75000, cond:"new", condText:"Nueva con etiqueta", sizes:["XL"], photos:["fotos/gk-236-1.jpg","fotos/gk-236-2.jpg"], desc:"Polera nueva con etiqueta, negra con roturas de fábrica. Gráfica grande de llamas, cadena y águila con letras YoungLA en la espalda, y logo YA chico al frente."},
   {cat:"Ropa", code:"GK-237", brand:"Hoopers", name:"Hoopers Michael Jordan Champions Tee Black", price:24990, cond:"new", condText:"Nueva", sizes:["S","M","L","XL"], photos:["fotos/gk-237-1.jpg","fotos/gk-237-2.jpg"], desc:"Polera nueva. Retrato Champions al frente y collage de Michael Jordan con los Bulls en la espalda."},
+  {cat:"Ropa", code:"GK-238", brand:"Undefeated", name:"Undefeated Play Dirty Baseball Tee Black", price:55000, cond:"new", condText:"Nueva", sizes:["S","M","L","XL"], photos:["fotos/gk-238-1.jpg"], desc:"Polera nueva. Letras UNDFTD y escudo de béisbol con bates y cinta Play Dirty al frente."},
   /* ---------- EJEMPLOS (se borran al terminar de cargar) ---------- */
   {cat:"Zapatillas", code:"GK-001", brand:"Jordan", name:"Jordan 4 Retro Black Cat (2020)", price:320000, cond:"new", condText:"Nuevo (DS)", sizes:["US 8.5","US 9.5"], box:true, tint:["#151517","#1f1f22","#3a3a3f"], desc:"Par nuevo, sin uso, con caja original."},
   {cat:"Zapatillas", code:"GK-002", brand:"Jordan", name:"Jordan 1 Retro High OG Chicago Lost and Found", price:285000, cond:"new", condText:"Nuevo (DS)", sizes:["US 9","US 10"], box:true, tint:["#f2efe6","#efe3c8","#b8262c"], desc:"Par nuevo con caja. Envejecido de fábrica en la suela, es parte del diseño."},
@@ -406,7 +407,7 @@ const avail = p => p.sizes.filter(s=>!(p.soldSizes||[]).includes(s));
 const sizeNum = s => CLOTH.includes(s) ? 100 + CLOTH.indexOf(s) : (parseFloat(String(s).replace(/[^\d.]/g,"")) || 0);
 
 /* banda */
-const bandWords = ["100% originales","Sneakers","Ropa","Antofagasta","Envíos a todo Chile","Jordan","Nike","BAPE","Yeezy","Essentials","Gods","Billionaire Boys Club","YoungLA","Hoopers"];
+const bandWords = ["100% originales","Sneakers","Ropa","Antofagasta","Envíos a todo Chile","Jordan","Nike","BAPE","Yeezy","Essentials","Gods","Billionaire Boys Club","YoungLA","Hoopers","Undefeated"];
 $("#band").innerHTML = [...bandWords,...bandWords].map(w=>`<span>${w}</span>`).join("");
 
 /* dibujo de zapatilla genérico (para pares sin foto) */
