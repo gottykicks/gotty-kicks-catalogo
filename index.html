@@ -586,7 +586,7 @@ function open(code){
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
         Pedir por Instagram</a>
       <p class="note" style="margin:0">¿Quieres reservarlo? Recibimos abonos hasta fin de mes; monto y plazos se conversan por DM.</p>
-      <div class="sub-actions"><span>Se abre el chat de @${IG_USER}. Mantén apretado y pega. Si no se abre, búscanos en Instagram como <b>@${IG_USER}</b> y pega el mensaje.</span><button class="linkish" type="button" id="copyOnly">Solo copiar</button></div>`}
+      <div class="sub-actions"><span>En el celular se abre el chat de @${IG_USER}; en el computador, el perfil (aprieta "Enviar mensaje"). Pega el mensaje y envíalo. Si no se abre, búscanos en Instagram como <b>@${IG_USER}</b>.</span><button class="linkish" type="button" id="copyOnly">Solo copiar</button></div>`}
     </div>`;
   $("#sheetBg").hidden = false;
   document.body.style.overflow = "hidden";
@@ -671,7 +671,9 @@ function copy(text, okMsg){
 /* abrir el chat de Instagram: dentro de la app de Instagram (o Facebook) se navega en la misma ventana,
    porque su navegador interno ignora las pestañas nuevas; en el resto se intenta pestaña nueva y si no, misma ventana */
 function goIG(){
-  const url = "https://ig.me/m/" + IG_USER;
+  /* en celular, ig.me/m abre directo el chat en la app; en computador ese link da error, así que se abre el perfil (botón "Enviar mensaje") */
+  const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+  const url = mobile ? "https://ig.me/m/" + IG_USER : "https://www.instagram.com/" + IG_USER + "/";
   const inApp = /Instagram|FBAN|FBAV/i.test(navigator.userAgent || "");
   if(inApp){ setTimeout(()=>{ location.href = url; }, 700); return; }
   let w = null;
